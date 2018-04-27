@@ -16,5 +16,5 @@ Note:
 	1.DDE5.txt was a pdf file that has been converted to text format.
 	2.words.txt contains a list of trivial words(see code comments) to filter out the non-trivial ones  
 	  into index.txt
-Possible reworks:The array of structures in rm_dp.c 'struct word w' must be updated to be the size of index.txt, which would obviously vary with the text file that you use.The subsequent for-loop index must also be changed.
-Possible workaround:#define the SIZE (or) dynamic memory allocation..?
+Caveat : The array of structures in rm_dp.c 'struct word w' must be updated to be the size of index.txt, which would obviously vary with the text file that you use.The subsequent for-loop index must also be changed.
+
