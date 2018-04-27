@@ -76,9 +76,10 @@ void searchByName()
     	printf("No, the word is not in index.\n");
     	return 0;
     }
-        if(flag==0){
-         printf("No the word %s is not present in the index",ch);
-        }
+    if(flag == 0)
+    {
+        printf("No the word %s is not present in the index",ch);
+    }
 }
 
 
@@ -116,7 +117,8 @@ void display()
         printf ("%c", c);
         c = fgetc(fptr);
     }
- 	printf("\n\n");
+    printf("\n\n");
+    
     fclose(fptr);
     return 0;
 }
@@ -124,7 +126,7 @@ void display()
 //displays the contents of the final index, with reapeating occurrences removed
 void displayIndex()
 {
-	FILE *fptr;
+    FILE *fptr;
  
     char filename[100], c;
 
@@ -155,7 +157,9 @@ void create_words()
     FILE* f=fopen("words.txt","r");
     char d[20];
     int count=0;
-    if(f==NULL){printf("error\n");}
+    
+    if(f == NULL){printf("error\n");}
+    
     while(!feof(f))
     {
 
@@ -177,6 +181,7 @@ int binary_search(char* t)
     int high=3007;
     int mid;
     char g[20];
+	
     while(low<=high)
     {
         mid=(low+high)/2;
@@ -187,13 +192,15 @@ int binary_search(char* t)
         {
             return 1;
         }
-        //string you're searching for is greater than string in middle,
+    
+		//string you're searching for is greater than string in middle,
         //so we search the right half of the words
         else if(strcmp(t,g)>0)
         {
             low=mid+1;
         }
-        //string you're searching for is lesser than string in middle,
+        
+		//string you're searching for is lesser than string in middle,
         //so we search the left half of the words
         else
         {
@@ -206,9 +213,9 @@ int binary_search(char* t)
 //function to ensure that the string t contains alphabets only
 int test(char *t)
 {
-    for(int i=0;i<strlen(t);i++)
+    for(int i = 0; i < strlen(t); i++)
     {
-        if(!isalpha(t[i]))
+        if( !isalpha(t[i]) )
         {
             return 0;
         }
@@ -224,10 +231,11 @@ void n_fun()
     char ch[50];
     char t,t2;
     int pg_no=-1;
-	while(!feof(fp5))
+	
+	while( !feof(fp5) )
 	{
-		t2=fgetc(fp5);
-    	if(t2==12)
+		t2 = fgetc(fp5);
+    	if(t2 == 12)
     	{
     		pg_no++;
     	}
@@ -258,12 +266,14 @@ int main()
     FILE *fp2;
     fp=fopen("DDE5.txt","r");
     fp2=fopen("index.txt","w");
-    FILE *fp3=fopen("inter.txt","w");
+    
+	FILE *fp3=fopen("inter.txt","w");
     if(fp==NULL)
     {
         printf("error1");
     }
-    create_words();
+    
+	create_words();
     char t[50];
     int pg_no=0;
     char p;
@@ -282,13 +292,13 @@ int main()
     }
     fclose(fp3);
 
-    fp3=fopen("inter.txt","r");
-    while(!feof(fp3))
+    fp3 = fopen("inter.txt","r");
+    while( !feof(fp3) )
     {
-        p=fgetc(fp3);
+        p = fgetc(fp3);
         while(p == ' ')
         {
-        	p=fgetc(fp3);
+        	p = fgetc(fp3);
         }
         
         //updating page numbers; checking p== 12 because 
@@ -297,7 +307,7 @@ int main()
 
         //seeks the pointer to one before current location
         fseek(fp3,-1,SEEK_CUR);
-        if(p==12)
+        if(p == 12)
         {
         	pg_no++;
         }
@@ -329,7 +339,8 @@ int main()
     	printf("3.Display the words by occurence.\n");
 		printf("Enter your choice: \n\n");
     	scanf("%d",&ch);
-    	switch(ch)
+    	
+		switch(ch)
     	{
         	case 1:
             	display();
