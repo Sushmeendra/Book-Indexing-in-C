@@ -4,13 +4,12 @@
 #include <ctype.h>
 
 void searchByName();
-
 void create_words();
 void display();
 
 struct word
 {
-	int flag;
+    int flag;
     char s[50];
     int pg;
 };
@@ -22,16 +21,17 @@ void searchByName()
 
     FILE *fp=fopen("index_f.txt","r");
     char ch[50];
-    printf("Enter the word to be searched in the index: ");
-    printf("\n");
+	
+    printf("Enter the word to be searched in the index: \n");
     scanf("%s",ch);
+	
     char c[50];
     char nl;
     int d;
     int flag=0;
-
     int count = 0;
     int flag2=0;
+	
     while(!feof(fp))
     {
     	//check if count == size of index_f.txt
@@ -44,11 +44,12 @@ void searchByName()
         fscanf(fp,"%s",c);
 
         //if entered word matches with word in index_f.txt
-        if(strcmp(c,ch)==0)
+        if(strcmp(c,ch) == 0)
         {
-            printf("Yes the word %s is present in the index it is found in page numbers : ",ch);
-            nl=fgetc(fp);
-            //printing all the page numbers in which the word occurs
+            printf("Yes, the word %s is present in the index it is found in page numbers : ",ch);
+            nl = fgetc(fp);
+			
+            //printing the page number of all pages in which the word occurs
             while(nl!='\n')
             {
                 fscanf(fp,"%d",&d);
